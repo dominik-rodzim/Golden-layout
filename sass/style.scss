@@ -1,7 +1,105 @@
+@import "normalize";
+
 /* variables */
-	
+
 $white: #ffffff;
 $black: #222222;
 $yellow: #fed136;
+$yellow-hover: #e5b929;
 $bg-gray: #f7f7f7;
-$p-gray: #777777;
+$gray: #777777;
+
+$font-header: 'Montserrat', sans-serif;
+$font-subheader: 'Droid Serif', serif;
+$font-general: 'Roboto Slab', serif;
+
+
+$break-large: 1200px;
+$break-medium: 991px;
+$break-small: 576px;
+
+@mixin respond($breakpoint) {
+    @if $breakpoint == break-small {
+        @media only screen and (max-width: $break-small) { @content };
+    }
+    @if $breakpoint == break-medium {
+        @media only screen and (max-width: $break-medium) { @content };
+    }
+    @if $breakpoint == break-large {
+        @media only screen and (max-width: $break-large) { @content };
+    }
+    @if $breakpoint == hover {
+        @media only screen and (min-width: $break-large) { @content };
+    }
+}
+
+.section-padding {
+	padding: 120px 0;
+
+	@include respond(break-large) {
+	        padding: 12.5rem 2rem;
+	}
+
+	@include respond(break-medium) {
+	        padding: 10rem 2rem;
+	}
+
+	@include respond(break-small) {
+	        padding: 8rem 2rem;
+	}
+}
+
+.flexbox {
+	display: flex;
+    flex-wrap: wrap;
+}
+
+.clearfix {
+    content: "";
+    display: table;
+    clear: both;
+} 
+
+/* global classes */
+
+.section-header {
+	color: $black;
+	font-family: $font-header;
+	font-size: 40px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.section-subheader {
+	color: $gray;
+	font-family: $font-subheader;
+	font-size: 16px;
+	font-style: italic;
+}
+
+.small-header {
+	color: $black;
+	font-family: $font-header;
+	font-size: 18px;
+	font-weight: 700;	
+}
+
+p {
+	color: $gray;
+	font-family: $font-general;
+	font-size: 14px;
+	font-weight: 400;
+}
+
+button {
+	@extend .small-header;
+	color: white;
+	text-transform: uppercase;
+	background-color: $yellow;
+
+	&:hover {
+		background-color: $yellow-hover;
+	}
+}
+
+/* navigation */
